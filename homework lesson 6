@@ -1,0 +1,41 @@
+def passwordcheck():
+  password = 'PangJu10'
+  userguess = input("Please input a password to grant access. ")
+  while userguess != password:
+    print("\nThat is the wrong password. Try again.")
+    userguess = input("Please input a password to grant access. ")
+  
+  print("\nAccess Granted")
+
+def agecalculator():
+  userinput = ''
+  while userinput != 'dog' and userinput != 'cat':
+    userinput = input("Is the animal a dog or cat? Please respond with either 'dog' or 'cat'. ")
+    if userinput != 'dog' and userinput != 'cat':
+      print("Unknown response. Try again.\n")
+    
+  if userinput == 'dog':
+    animalage = int(input("How old is your dog? "))
+    if animalage == 1:
+      print("\nYour dog is 12 human years old.")
+    elif animalage == 2:
+      print("\nYour dog is 24 human years old.")
+    elif animalage > 2:
+      print("\nYour dog is ", 24 + (animalage - 2) * 4, "human years old.")
+    elif animalage == 0:
+        print("\nYour dog is 0 human years old.")
+    else:
+        print("\nInvalid number, sorry.")
+    
+  else:
+    animalage = int(input("How old is your cat? "))
+    if animalage == 1:
+      print("\nYour cat is 15 human years old.")
+    elif animalage == 2:
+      print("\nYour cat is 24 human years old.")
+    elif animalage > 2:
+      print("\nYour cat is ", 24 + (animalage - 2) * 4, "human years old.")
+    elif animalage == 0:
+      print("\nYour cat is 0 human years old.")
+    else:
+      print("\nInvalid number, sorry.")
