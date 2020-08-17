@@ -1,0 +1,118 @@
+def rolldice1():
+  playerdice = []
+  computerdice = []
+  rollnumber = int(input("How many times would you like to roll?\n"))
+  dicenumber = int(input("\nPlease input a number of dice you want to roll each time.\n"))
+  loopcount = 0
+  rollorhold = ''
+  for i in range(dicenumber):
+    playerdice.append(random.randint(1, 6))
+  playervalue = sum(playerdice)
+
+  for i in range(dicenumber):
+    computerdice.append(random.randint(1, 6))
+  computervalue = sum(computerdice)
+
+  for y in range(rollnumber):
+    rollorhold = ''
+    loopcount = loopcount + 1
+    if dicenumber == 1:
+      print("\nYou and the computer each rolled 1 die")
+    else:
+      print("\nYou and the computer each rolled", dicenumber, "dice")
+    print("You rolled",playervalue,"in total")
+    print("The computer rolled",computervalue,"in total")
+
+    if playervalue > computervalue:
+      print("You win!")
+    elif computervalue > playervalue:
+      print("The computer wins!")
+    else:
+      print("It's a tie!")
+    
+    if loopcount == rollnumber:
+      break
+    
+    while rollorhold != 'roll' and rollorhold != 'hold':
+      rollorhold = input("Do you want to roll again (type roll), or keep the number you rolled last\ntime (type hold)?\n(these are the only two options)\n")
+      if rollorhold != 'roll' and rollorhold != 'hold':
+        print("Invalid option, try again.")
+    
+    computerrollhold = random.randint(1, 2)
+
+    if rollorhold == 'roll':
+      for i in range(dicenumber):
+        playerdice.append(random.randint(1, 6))
+      playervalue = sum(playerdice)
+
+    if computerrollhold == 1:
+      for i in range(dicenumber):
+        computerdice.append(random.randint(1, 6))
+      computervalue = sum(computerdice)
+
+def rolldice2():
+  playerdice = []
+  computerdice = []
+  dicenumber = int(input("Please input a number of dice you want to roll each time.\n"))
+  rollorhold = ''
+  againroll = ''
+  wantrh = ''
+  rollagain = True
+  for i in range(dicenumber):
+    playerdice.append(random.randint(1, 6))
+  playervalue = sum(playerdice)
+
+  for i in range(dicenumber):
+    computerdice.append(random.randint(1, 6))
+  computervalue = sum(computerdice)
+
+  while rollagain:
+    if dicenumber == 1:
+      print("\nYou and the computer each rolled 1 die")
+    else:
+      print("\nYou and the computer each rolled", dicenumber, "dice")
+    print("You rolled",playervalue,"in total")
+    print("The computer rolled",computervalue,"in total")
+
+    if playervalue > computervalue:
+      print("You win!")
+    elif computervalue > playervalue:
+      print("The computer wins!")
+    else:
+      print("It's a tie!")
+
+    while wantrh != 'y' and wantrh != 'n':
+      wantrh = input("Do you want to roll/hold certain dice you have again? (the computer's\nnumber won't change) Type 'y' for yes or 'n' for no.\n")
+      if wantrh == 'y':
+        while len(rollorhold) != dicenumber:
+          rollorhold = input("You can enter choices to roll or hold certain dice, in this format:\nIf you have three dice and your list is [1,6,3], by entering ‘r--’ you\ncan generate a new list, like [4,6,3].\nType 'r' to roll a certain die and any other character (preferably '-')\nto hold a certain die.\n")
+          if len(rollorhold) != dicenumber:
+            print("Invalid length of string, try again. (the length of the string should be equal to the number of dice you're rolling.)")
+    
+        rhnumber = 0
+        while rhnumber < dicenumber:
+          if rollorhold[rhnumber] == 'r':
+            playerdice[rhnumber] = random.randint(1, 6)
+          rhnumber = rhnumber + 1
+        playervalue = sum(playerdice)
+        print("After rolling again, your new total is "+str(playervalue)+".")
+      elif wantrh != 'y' and wantrh != 'n':
+        print("Invalid option, try again.")
+  
+    while againroll != 't' and againroll != 'f':
+      againroll = input("Do you want to roll again? (t/f - if yes, type 't', if no, type 'f')\n")
+      if againroll == 'f':
+        rollagain = False
+      elif againroll != 't' and againroll != 'f':
+        print("Invalid option, try again.")
+    
+    if rollagain == False:
+      break
+    
+    for i in range(dicenumber):
+      playerdice.append(random.randint(1, 6))
+    playervalue = sum(playerdice)
+
+    for i in range(dicenumber):
+      computerdice.append(random.randint(1, 6))
+    computervalue = sum(computerdice)
