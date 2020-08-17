@@ -1,3 +1,5 @@
+import random
+
 def rolldice1():
   playerdice = []
   computerdice = []
