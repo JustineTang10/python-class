@@ -1,0 +1,16 @@
+#Paint calculator
+
+print("--- Please answer all measurements in feet (ft) ---\n")
+
+roomlength = int(input("What is the length of the room you want to paint? "))
+roomwidth = int(input("What about the width? "))
+roomheight = int(input("What about the height? "))
+door = int(input("How many doors are in your room? "))
+window = int(input("How many windows? "))
+
+area = 2*(roomlength*roomwidth)+2*(roomlength*roomheight)+2*(roomwidth*roomheight)
+area = area-(door*20)-(window*15)
+gallon = round(area/350,2)
+
+print("You need to cover",area,"square feet with paint.")
+print("You will need about",gallon,"gallons.")
