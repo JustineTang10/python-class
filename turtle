@@ -1,0 +1,26 @@
+import turtle
+import random
+
+color = ['red', 'blue', 'green']
+randomcolor = ''
+turtlelist = []
+
+for i in range(3):
+  number = random.randint(0, len(color)-1)
+  randomcolor = color.pop(number)
+  turtlename = "turtle"+str(number)
+  turtlename = turtle.Turtle()
+  turtlelist.append(turtlename)
+  turtlename.shape('turtle')
+  turtlename.color(randomcolor)
+  turtlename.penup()
+  turtlename.goto(-160, 100*i)
+  turtlename.pendown()
+
+while True:
+  chosenturtle = random.choice(turtlelist)
+  chosenturtle.forward(1)
+  
+  if chosenturtle.xcor() == 140:
+    print("The winner is the",chosenturtle.fillcolor(),"turtle!")
+    break
