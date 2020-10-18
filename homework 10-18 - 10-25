@@ -1,0 +1,31 @@
+def three_3():
+  def right_justify(word):
+    filename = "spaceandword.txt"
+    with open(filename, 'w') as file_object:
+      file_object.write("")
+    for i in range(70 - len(word)):
+      with open(filename, 'a') as file_object:
+        file_object.write(" ")
+    with open(filename, 'a') as file_object:
+      file_object.write(word)
+    with open(filename, 'r') as file_object:
+      contents = file_object.read()
+    
+    print(contents)
+
+  right_justify("12345")
+  right_justify("hi")
+  right_justify("testing hi")
+
+def three_4():
+  def do_twice(function, value):
+    function(value)
+    function(value)
+  def do_four(function, value):
+    do_twice(function, value)
+    do_twice(function, value)
+  def print_twice(word):
+    print(word)
+    print(word)
+  
+  do_four(print_twice, 'spam')
