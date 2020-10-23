@@ -1,0 +1,17 @@
+#finding the greatest number
+import random
+
+list = []
+loop = 0
+maxnum = 0
+
+for i in range(10):
+  list.append(random.randint(1, 50))
+
+for i in range(10):
+  if list[loop] > maxnum:
+    maxnum = list[loop]
+  loop += 1
+
+print(list)
+print("The greatest number is",maxnum)
