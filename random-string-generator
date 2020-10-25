@@ -1,0 +1,43 @@
+'''Program with no arguments'''
+def randomstring1():
+  import random
+  letters = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z']
+  characters = []
+  contents = ''
+
+  stringlength = int(input("How long is the string that you would like to generate? "))
+  numberofletters = input('How many letters (not numbers) would you like to be in the random string? (For a random amount, type "r".) ')
+  if numberofletters == "r":
+    numberofletters = random.randint(0, stringlength)
+  numberofletters = int(numberofletters)
+
+  for i in range(numberofletters):
+    characters.append(random.choice(letters))
+  for i in range(stringlength-numberofletters):
+    characters.append(str(random.randint(0, 9)))
+  for i in range(stringlength):
+    contents = contents+characters.pop(random.randint(0, len(characters)-1))
+  print("Your random string is",contents)
+
+'''Program with arguments'''
+import random
+stringlength = int(input("How long is the string that you would like to generate? "))
+numberofletters = input('How many letters (not numbers) would you like to be in the random string? (For a random amount, type "r".) ')
+if numberofletters == "r":
+  numberofletters = random.randint(0, stringlength)
+numberofletters = int(numberofletters)
+
+def randomstring2(length, letternumber):
+  letters = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z']
+  characters = []
+  contents = ''
+
+  for i in range(letternumber):
+    characters.append(random.choice(letters))
+  for i in range(length-letternumber):
+    characters.append(str(random.randint(0, 9)))
+  for i in range(length):
+    contents = contents+characters.pop(random.randint(0, len(characters)-1))
+  print("Your random string is",contents)
+
+randomstring2(stringlength, numberofletters)
