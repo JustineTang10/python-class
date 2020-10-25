@@ -1,3 +1,5 @@
+#Random string generator
+
 '''Program with no arguments'''
 def randomstring1():
   import random
