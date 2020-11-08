@@ -1,0 +1,71 @@
+'''Homework: Unit Converter'''
+'''This was done in repl.it, for a better experience on a different software remove the \n symbols'''
+metric = {"km":1000,"hm":100,"dkm":10,"m":1,"dm":0.1,"cm":0.01,"mm":0.001}
+customary = {"in":1,"ft":12,"yd":36,"mi":63360}
+def metricconvert(unit1, unit2, value, printresult):
+  multiple = metric[unit1]/metric[unit2]
+  if printresult == True:
+    print("Your converted value is",value*multiple,unit2+".")
+  else:
+    return multiple
+def customaryconvert(unit1, unit2, value, printresult):
+  multiple = customary[unit1]/customary[unit2]
+  if printresult == True:
+    print("Your converted value is",value*multiple,unit2+".")
+  else:
+    return multiple
+def convertbot():
+  print("This converter will allow you to convert units of both metric and\ncustomary units.")
+  print("")
+  convertchoice = int(input("Would you like to convert metric units (1),customary units (2), or both\n(3)? Input the number that matches your choice. "))
+  if convertchoice == 1:
+    unit1 = input("Please input the abbreviation of the metric unit you would like to\nconvert from. (allows km, hm, dkm, m, dm, cm, and mm) ")
+    unit2 = input("Please input the abbreviation of the metric unit you would like to\nconvert to. ")
+    value = float(input("Please input the value you would like to convert. "))
+    metricconvert(unit1, unit2, value, True)
+  elif convertchoice == 2:
+    unit1 = input("Please input the abbreviation of the customary unit you would like to\nconvert from. (allows in, ft, yd, and mi) ")
+    unit2 = input("Please input the abbreviation of the customary unit you would like to\nconvert to. ")
+    value = float(input("Please input the value you would like to convert. "))
+    customaryconvert(unit1, unit2, value, True)
+  elif convertchoice == 3:
+    whichway = int(input("Are you converting from metric to customary (1) or customary to metric\n(2)? Input the number that matches your choice. "))
+    if whichway == 1:
+      unit1 = input("Please input the abbreviation of the metric unit you would like to\nconvert from. (allows km, hm, dkm, m, dm, cm and mm) ")
+      unit2 = input("Please input the abbreviation of the customary unit you would like to\nconvert to. (allows in, ft, yd, and mi) ")
+      value = float(input("Please input the value you would like to convert. "))
+      multiple = metricconvert(unit1, "cm", value, False)
+      value2 = (value*multiple)/2.54
+      customaryconvert("in", unit2, value2, True)
+    elif whichway == 2:
+      unit1 = input("Please input the abbreviation of the customary unit you would like to\nconvert from. (allows in, ft, yd, and mi) ")
+      unit2 = input("Please input the abbreviation of the metric unit you would like to\nconvert to. (allows km, hm, dkm, m, dm, cm and mm) ")
+      value = float(input("Please input the value you would like to convert. "))
+      multiple = customaryconvert(unit1, "in", value, False)
+      value2 = (value*multiple)*2.54
+      metricconvert("cm", unit2, value2, True)
+    else:
+      print("Invalid option, sorry.")
+  else:
+    print("Invalid option, sorry.")
+
+'''Sorting a List (Greatest to Least)'''
+def listsort():
+  import random
+  originallist = []
+  sortedlist = []
+  greatestnumber = 0
+
+  for i in range(10):
+    originallist.append(random.randint(1, 50))
+
+  print("The original list was",originallist)
+
+  for i in range(10):
+    greatestnumber = 0
+    for i in range(len(originallist)):
+      if originallist[i] > greatestnumber:
+        greatestnumber = originallist[i]
+    sortedlist.append(originallist.pop(originallist.index(greatestnumber)))
+  
+  print("The sorted list is",sortedlist)
