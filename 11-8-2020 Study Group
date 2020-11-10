@@ -1,0 +1,48 @@
+import random
+
+def bubblesort():
+  list = []
+  sortedcount = 0
+  for i in range(10):
+    list.append(random.randint(1, 50))
+  print("The original list was",list)
+  while True:
+    if sortedcount == 9:
+      break
+    sortedcount = 0
+    for i in range(9):
+      if list[i+1] > list[i]:
+        list[i], list[i+1] = list[i+1], list[i]
+      else:
+        sortedcount += 1
+  print("The sorted list is",list)
+
+def selectionsort():
+  originallist = []
+  sortedlist = []
+  for i in range(10):
+    originallist.append(random.randint(1, 50))
+  print("The original list was",originallist)
+  while len(originallist) > 0:
+    greatestnumber = 0
+    for i in range(len(originallist)):
+      if originallist[i] > greatestnumber:
+        greatestnumber = originallist[i]
+    sortedlist.append(originallist.pop(originallist.index(greatestnumber)))
+  print("The sorted list is",sortedlist)
+
+def insertionsort():
+  list = []
+  for i in range(10):
+    list.append(random.randint(1, 50))
+  print("The original list was",list)
+  for i in range(10):
+    loop = 0
+    while True:
+      if list[loop] < list[loop+1]:
+        list[loop], list[loop+1] = list[loop+1], list[loop]
+      else:
+        loop += 1
+      if loop == 9:
+        break
+  print("The sorted list is",list)
