@@ -1,4 +1,32 @@
+#Homework
+'''I normally just list possible bugs in my head, or search for them depending on the program. But here's the turtle program.'''
+def pseudocodeturtle():
+  import turtle
+  turtle = turtle.Turtle()
+  turtle.shape('turtle')
+  turtle.color('green')
+
+  def pseudocode1():
+    for i in range(6):
+      turtle.fd(100)
+      turtle.left(60)
+  
+  def pseudocode2():
+    for i in range(26):
+      turtle.circle(100)
+      turtle.right(10)
+  
+  pseudocode1()
+  turtle.clear()
+  pseudocode2()
+ 
 #Study Group: Binary Search
+'''
+Answers to study group question in email:
+1. Finding a specific value in a sorted list quickly: like the Khan Academy link said, searching for a single value out of more than 2 million values.
+2. Well, kind of the same answer as #1. You can use it to find a specific value in a sorted list quickly.
+3. Does the code below count?
+'''
 def binarysearch():
   goalnumber = random.randint(1, 1000)
   min = 1
