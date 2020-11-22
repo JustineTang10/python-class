@@ -1,0 +1,17 @@
+#Study Group: Binary Search
+def binarysearch():
+  goalnumber = random.randint(1, 1000)
+  min = 1
+  max = 1000
+  tries = 0
+  print("The goal of this program is to guess a randomly chosen number from 1 to 1000.")
+  while True:
+    tries += 1
+    middle = round((min+max)/2)
+    if middle > goalnumber:
+      max = middle - 1
+    elif middle < goalnumber:
+      min = middle + 1
+    else:
+      break
+  print("It took",tries,"tries to find the number between 1 and 1000.")
