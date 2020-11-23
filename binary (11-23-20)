@@ -32,3 +32,24 @@ def find11():
     else:
       break
   print("11 is at index",list.index(middle))
+ 
+def unsortedbinarysearch2(): '''This one actually works'''
+  goalnumber = random.randint(0, 999)
+  list = []
+  for i in range(1000):
+    list.append(i)
+  random.shuffle(list)
+  min = 0
+  max = 999
+  print("This program attempts to find a value in an unsorted list.")
+  tries = 0
+  while True:
+    tries +=1
+    middle = round((min+max)/2)
+    if list[list.index(middle)] > goalnumber:
+      max = middle - 1
+    elif list[list.index(middle)] < goalnumber:
+      min = middle + 1
+    else:
+      break
+  print("It took",tries,"tries to find the number between 1 and 1000.")
