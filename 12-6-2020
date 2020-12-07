@@ -1,0 +1,15 @@
+import turtle
+turtle = turtle.Turtle()
+turtle.shape('turtle')
+def shapedrawer(sidenumber, sidelength=100):
+  for i in range(sidenumber):
+    turtle.fd(sidelength)
+    turtle.left(360/sidenumber)
+def shapebot():
+  sidenumber = int(input("Please input the number of sides you would like the shape to have. "))
+  sidelength = input("Please input the length of each side you would like the shape to have. (If you enter a non-numeric value, it will default to 100.) ")
+  if sidelength.isnumeric() == True:
+    sidelength = int(sidelength)
+    shapedrawer(sidenumber, sidelength)
+  else:
+    shapedrawer(sidenumber)
