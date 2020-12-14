@@ -5,10 +5,14 @@ def shapedrawer(turtlename, sidenumber, sidelength=100):
     turtlename.fd(sidelength)
     turtlename.left(360/sidenumber)
 
+def turtlemove(loopnumber):
+  for i in range(loopnumber):
+    shapedrawer(x, 3, 50)
+    x.right(360/loopnumber)
+
 x=turtle.Turtle()
 x.shape('turtle')
 x.color('lightBlue')
 x.shapesize(1,0.5)
-for i in range(36):
-  shapedrawer(x, 3, 50)
-  x.right(10)
+loopnumber = int(input("How many times do you want the turtle to draw a triangle? "))
+turtlemove(loopnumber)
