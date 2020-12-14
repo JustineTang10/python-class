@@ -1,0 +1,11 @@
+x=turtle.Turtle()
+x.shape('turtle')
+x.color('lightBlue')
+x.shapesize(1,0.5)
+for i in range(108):
+  x.forward(50)
+  x.left(120)
+  if (i+1)%3 == 0:
+    x.right(10)
+
+#All I did was remove the nested loop XD
