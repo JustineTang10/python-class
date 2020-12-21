@@ -1,0 +1,31 @@
+#I apparently did both of these programs over the summer.
+## https://github.com/JustineTang10/true-or-false/blob/master/homework (windy or cold)
+## https://github.com/JustineTang10/python-class/blob/master/homework%20lesson%206 (age calculator)
+
+#Since I have no idea what to do, I'll just improve the windy or cold program.
+
+def windyorcoldimproved():
+  windyanswer = ''
+  coldanswer = ''
+  print('Input all answers with either "yes" or "no", all lowercase letters.\n')
+  while windyanswer != 'yes' and windyanswer != 'no':
+    windyanswer = input("Is it windy outside? ")
+    if windyanswer == 'yes':
+      windy = True
+    elif windyanswer == 'no':
+      windy = False
+    else:
+      print("Unknown option, try again.")
+  while coldanswer != 'yes' and coldanswer != 'no':
+    coldanswer = input("Is it cold outside? ")
+    if coldanswer == 'yes':
+      cold = True
+    elif coldanswer == 'yes':
+      cold = False
+    else:
+      print("Unknown option, try again.")
+  
+  if windy or cold:
+    print("Bring the jacket!")
+  else:
+    print("I don't need the jacket")
