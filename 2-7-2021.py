@@ -13,4 +13,7 @@ def passwordcheck():
     userguess = input("Please input a password to grant access. ")
     tries += 1
   
-  print(f"\nAccess Granted - it took you {tries} tries")
+  return [tries, 'try' if tries == 1 else 'tries']
+
+data = passwordcheck()
+print(f'It took you {data[0]} {data[1]}')
