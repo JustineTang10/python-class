@@ -22,7 +22,7 @@ with open('iris.csv') as csvfile:
     pl[row[4]] += float(row[2])
     pw[row[4]] += float(row[3])
 
-""" # many digits after the decimal version
+""" # many digits after the decimal version, delete triple quotes to test out
 print('- SETOSA -')
 print(f'Sepal length: {sl["setosa"]/c["setosa"]}')
 print(f'Sepal width: {sw["setosa"]/c["setosa"]}')
