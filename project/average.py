@@ -60,3 +60,62 @@ print(f'Sepal length: {round(sl["virginica"]/c["virginica"], 1)}')
 print(f'Sepal width: {round(sw["virginica"]/c["virginica"], 1)}')
 print(f'Petal length: {round(pl["virginica"]/c["virginica"], 1)}')
 print(f'Petal width: {round(pw["virginica"]/c["virginica"], 1)}')
+
+"""
+Got a different data set? Try this function - though it's very picky:
+  - it assumes there is a first header row
+  - it can only use one column as the 'string keys' it outputs
+There might also be other bugs in the program - see if you can fix them!
+"""
+
+def average(file):
+  try:
+    with open(file) as csvfile:
+      csvreader = csv.reader(csvfile, delimiter=',')
+      data = {'count': {}}
+      first = True
+      firstrow = []
+      l = []
+      second = False
+      ind = -1
+      for row in csvreader:
+        if first:
+          firstrow = row
+          first = False
+          second = True
+          continue
+        elif second:
+          for item in row:
+            try: float(item)
+            except:
+              if ind != -1:
+                raise ValueError
+              else:
+                ind = row.index(item)
+          for thing in firstrow:
+            if firstrow.index(thing) != ind:
+              data[thing] = {}
+          second = False
+
+        data['count'].setdefault(row[ind], 0)
+        data['count'][row[ind]] += 1
+        for v in list(data.keys()):
+          if v == 'count':
+            continue
+          data[v].setdefault(row[ind], 0)
+          data[v][row[ind]] += float(row[list(data.keys()).index(v)-1])
+
+      averages = {}
+      for key in data:
+        if key == 'count': continue
+        averages[key] = {}
+        for datakey in data[key]:
+          averages[key][datakey] = data[key][datakey]/data['count'][datakey]
+
+      return averages
+  except FileNotFoundError:
+    return "The file doesn't exist"
+  except ValueError:
+    return "The data isn't numbers"
+  except IndexError:
+    return "Are all your rows the same length?"
