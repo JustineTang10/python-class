@@ -67,3 +67,55 @@ Petal width: {round(random_pl/(s_ratio[species]/c[species]), 1)} cm
 with open('iris.csv', 'a') as csv_file:
   csvwriter = csv.writer(csv_file)
   csvwriter.writerow([random_sl, random_sw, random_pl, random_pw, species]) # or the ratio format, whichever you want
+
+"""
+Got a different dataset? Try this function out!
+(though, like the average function - it is also kind of picky)
+"""
+def generator(file):
+  try:
+    with open(file) as csvfile:
+      csvreader = csv.reader(csvfile, delimiter=',')
+      data = {}
+      first = True
+      firstrow = []
+      l = []
+      second = False
+      ind = -1
+      for row in csvreader:
+        if first:
+          firstrow = row
+          first = False
+          second = True
+          continue
+        elif second:
+          for item in row:
+            try: float(item)
+            except:
+              if ind != -1:
+                raise ValueError
+              else:
+                ind = row.index(item)
+          for thing in firstrow:
+            if firstrow.index(thing) != ind:
+              data[thing] = {}
+          second = False
+
+        for v in list(data.keys()):
+          if list(data.keys()).index(v) == ind: continue
+          data[v].setdefault(row[ind], [])
+          data[v][row[ind]].append(float(row[list(data.keys()).index(v)]))
+      
+    random_vals = {}
+    for key in data:
+      random_vals[key] = {}
+      for valkey in data[key]:
+        random_vals[key][valkey] = random.random() * (max(data[key][valkey]) - min(data[key][valkey])) + min(data[key][valkey])
+
+    return random_vals
+  except FileNotFoundError:
+    return "The file doesn't exist"
+  except ValueError:
+    return "The data isn't numbers"
+  except IndexError:
+    return "Are all your rows the same length?"
