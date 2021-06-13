@@ -79,30 +79,29 @@ def generator(file):
       data = {}
       first = True
       firstrow = []
-      l = []
       second = False
-      ind = -1
+      ind = -1 # by default, the index
       for row in csvreader:
-        if first:
-          firstrow = row
+        if first: # first time?
+          firstrow = row # get the 1st row
           first = False
           second = True
           continue
-        elif second:
+        elif second: # second time?
           for item in row:
-            try: float(item)
+            try: float(item) # is item numeric?
             except:
-              if ind != -1:
-                raise ValueError
+              if ind != -1: # if index is already changed
+                raise ValueError # not a number dataset
               else:
                 ind = row.index(item)
           for thing in firstrow:
             if firstrow.index(thing) != ind:
-              data[thing] = {}
+              data[thing] = {} # make the keys for the dictionary
           second = False
 
         for v in list(data.keys()):
-          if list(data.keys()).index(v) == ind: continue
+          if list(data.keys()).index(v) == ind: continue # don't add the "key" index
           data[v].setdefault(row[ind], [])
           data[v][row[ind]].append(float(row[list(data.keys()).index(v)]))
       
@@ -112,10 +111,10 @@ def generator(file):
       for valkey in data[key]:
         random_vals[key][valkey] = random.random() * (max(data[key][valkey]) - min(data[key][valkey])) + min(data[key][valkey])
 
-    return random_vals
+    return random_vals # a dictionary with random numbers for each value, for any of your needs
   except FileNotFoundError:
     return "The file doesn't exist"
-  except ValueError:
+  except ValueError: # occurs when values can't be turned into floats
     return "The data isn't numbers"
   except IndexError:
     return "Are all your rows the same length?"
