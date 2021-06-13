@@ -75,16 +75,15 @@ def average(file):
       data = {'count': {}}
       first = True
       firstrow = []
-      l = []
       second = False
-      ind = -1
+      ind = -1 # default is last item
       for row in csvreader:
-        if first:
-          firstrow = row
+        if first: # first time?
+          firstrow = row # get 1st row
           first = False
           second = True
           continue
-        elif second:
+        elif second: # second time?
           for item in row:
             try: float(item)
             except:
@@ -97,25 +96,25 @@ def average(file):
               data[thing] = {}
           second = False
 
-        data['count'].setdefault(row[ind], 0)
+        data['count'].setdefault(row[ind], 0) # if it doesn't exist, make it 0
         data['count'][row[ind]] += 1
         for v in list(data.keys()):
-          if v == 'count':
+          if v == 'count': # don't add to count key
             continue
           data[v].setdefault(row[ind], 0)
-          data[v][row[ind]] += float(row[list(data.keys()).index(v)-1])
+          data[v][row[ind]] += float(row[list(data.keys()).index(v)-1]) # add the value itself
 
       averages = {}
       for key in data:
-        if key == 'count': continue
+        if key == 'count': continue # don't average for count key
         averages[key] = {}
         for datakey in data[key]:
-          averages[key][datakey] = data[key][datakey]/data['count'][datakey]
+          averages[key][datakey] = data[key][datakey]/data['count'][datakey] # divide total values' sum by number of values
 
-      return averages
+      return averages # the averages dictionary, for each dataset
   except FileNotFoundError:
     return "The file doesn't exist"
-  except ValueError:
+  except ValueError: # when float calls malfunction
     return "The data isn't numbers"
   except IndexError:
     return "Are all your rows the same length?"
